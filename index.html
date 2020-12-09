@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic-Tac-Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,30 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+
+      <h1>Bazinga</h1>
+      <form id="sign-up">
+          <input placeholder="email" type="text" name="credentials[email]"/>
+          <input type="password" placeholder="password" name="credentials[password]"/>
+          <input placeholder="password, but again" type="password" name="credentials[password_confirmation]"/>
+          <button type="submit">Sign Up!</button>
+        </form>
+      <form id="sign-in">
+        <input placeholder="email" type="text" name="credentials[email]"/>
+        <input placeholder="password" type="password" name="credentials[password]"/>
+        <button type="submit">Enter</button>
+      </form>
+      <form id="change-password">
+        <input placeholder="old password" type="password" name="passwords[old]"/>
+        <input placeholder="new password" type="password" name="passwords[new]"/>
+        <button type="submit">Change password</button>
+      </form>
+
+      <button id='logout'>Logout</button>
+
+
+      <p id='targethtml'>
+      </p>
+
     </body>
 </html>
