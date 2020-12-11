@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Tic-Tac-Toe</title>
+      <title>Tic-Tac-Toe but cool.</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,30 +12,110 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+      <div class='one-third first-third'>
+      <section class='header-parent'>
+      <h1>Tic-Tac-Toe but cool.</h1>
+  </section>
+</div>
+<div class='second-third-parent'>
+<div class='one-third second-third'>
 
-      <h1>Bazinga</h1>
-      <form id="sign-up">
-          <input placeholder="email" type="text" name="credentials[email]"/>
-          <input type="password" placeholder="password" name="credentials[password]"/>
-          <input placeholder="password, but again" type="password" name="credentials[password_confirmation]"/>
-          <button type="submit">Sign Up!</button>
-        </form>
-      <form id="sign-in">
+  <section class='intro-parent '>
+    <div class='intro-title-parent intro'>
+    <h1 class='intro-title intro'>Gamer Rise Up</h1>
+  </div>
+    <div class='intro-img-parent intro '>
+      <img class='intro-img' src='https://i.imgur.com/JV3a8xk.png'/>
+  </div>
+
+
+
+  <div class='description intro'>
+    <p>Tic-Tac-Toe re-imagined! Well, sort of.
+      All the rules are the same:
+      each player gets one turn each round,
+      starting with player 'X' followed by 'O'.
+      The first player with 3 in a row
+      (vertical, horizontal, or diagonal) wins!
+      Enjoy uwu</p>
+  </div>
+  </section>
+
+
+      <section class='sign-in-parent sign-in-init'>
+        <h1 class='login-text b1'>Log In</h1>
+      <form id="sign-in" class='b1'>
+        <div>
         <input placeholder="email" type="text" name="credentials[email]"/>
+      </div>
+      <div>
         <input placeholder="password" type="password" name="credentials[password]"/>
+      </div>
+      <div>
         <button type="submit">Enter</button>
+      </div>
       </form>
-      <form id="change-password">
+    </section>
+    <section class='sign-up-parent'>
+      <h2 class='signin-text'>Want In On The Action?</h2>
+      <h4 class='signin-text'>Sign up now!</h4>
+        <form id="sign-up" class='a1'>
+            <input placeholder="email" type="text" name="credentials[email]"/>
+            <input type="password" placeholder="password" name="credentials[password]"/>
+            <input placeholder="password, but again" type="password" name="credentials[password_confirmation]"/>
+            <button type="submit">Sign Me Up!</button>
+          </form>
+          <p id='targethtml' class=' targethtmlclass'>
+          </p>
+
+          <button type='click'  class='a1 login-button'>Log In with Existing Account</button>
+
+        </section>
+    <div id='authenticated-account' class='3a'>
+    <section class='change-password-parent'>
+      <form id="change-password" class='3a'>
         <input placeholder="old password" type="password" name="passwords[old]"/>
         <input placeholder="new password" type="password" name="passwords[new]"/>
         <button type="submit">Change password</button>
       </form>
+    </section>
+      <section class='logout-button-parent'>
+      <button id='logout' class='3a'>Logout</button>
+    </section>
+      <section class='newgame-button'>
+      <button id='newgame' class='3a'>New Game WAHOO!</button>
+    </section>
 
-      <button id='logout'>Logout</button>
+    <section class='3a'>
 
+    </section>
+      <section class='game-container-id 4a'>
+      <div class="4a">
+            <div class="row">
+              <div data-cell-index='0' class="col-4 single-box a" ></div>
+              <div data-cell-index='1' class="col-4 single-box b" ></div>
+              <div data-cell-index='2' class="col-4 single-box c" ></div>
+              <div data-cell-index='3' class="col-4 single-box d" ></div>
+              <div data-cell-index='4' class="col-4 single-box e" ></div>
+              <div data-cell-index='5' class="col-4 single-box f" ></div>
+              <div data-cell-index='6' class="col-4 single-box g" ></div>
+              <div data-cell-index='7' class="col-4 single-box h" ></div>
+              <div data-cell-index='8' class="col-4 single-box i" ></div>
+            </div>
+          </div>
 
-      <p id='targethtml'>
-      </p>
+      </section>
+      </div>
+    </div>
+    </div>
+    <div class='one-third third-third'>
+
+      <section class='footer-parent'>
+      <footer>
+        <p>Enrique Memije</p>
+      </footer>
+    </section>
+  </div>
 
     </body>
 </html>

@@ -20,11 +20,11 @@ const signInRequest = function(data) {
   })
 }
 ///////////////////////////////////////////////////////////////
-const changePasswordRequest = function(apiFood) {
+const changePasswordRequest = function(data) {
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH' ,
-    apiFood: apiFood ,
+    data ,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }

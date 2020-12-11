@@ -1,20 +1,30 @@
 'use strict'
 
-
+const store = require('./store.js')
 ////////////////////////////////////////////////////////
-const signUpPoggers = function(){
+const signUpPoggers = function(response){
   $('form').trigger('reset')
-  $('#targethtml').html('<h1>Welcome to Tic-Tac-Toe!</h1>')
+  store.user = response.user
+  $('#targethtml').html('<p>Account Created! Log in.</p>')
+  $('.b1').show()
+  $('.a1').show()
+  $('.3a').hide()
 }
 //////////////////
 const signUpBruhMoment = function(){
   $('#targethtml').html('<h1>Bruh Moment: Sign-Up Error</h1>')
 }
 ////////////////////////////////////////////////////////
-const signInPoggers = function() {
+const signInPoggers = function(response) {
   $('form').trigger('reset')
+  store.user = response.user
   $('#targethtml').html('<h1>Welcome Back to Tic-Tac-Toe!</h1>')
-}
+  $('.sign-up-parent').hide()
+  $('.sign-in-parent').hide()
+  $('.b1').hide()
+  $('.a1').hide()
+  $('.3a').show()
+  }
 ////////////////////
 const signInBruhMoment = function(){
   $('#targethtml').html('<h1>Bruh Moment: Sign-In Error</h1>')
@@ -23,6 +33,7 @@ const signInBruhMoment = function(){
 const passwordPog = function(){
   $('#targethtml').html('<h1>Remember your new password!!1!</h1>')
   $('form').trigger('reset')
+
 }
 ////////////////////
 const passwordBruh = function(){
@@ -31,13 +42,25 @@ const passwordBruh = function(){
 ///////////////////////////////////////////////////////
 const logOutPog = function() {
   $('#targethtml').html('<h1>plz come back im lonely</h1>')
+  $('.b1').show()
+  $('.a1').show()
+  $('.3a').hide()
+  $('.4a').hide()
+  $('.sign-up-parent').show()
+  $('.sign-in-parent').show()
 }
 /////////////////////
 const logOutBruh = function() {
   $('targethtml').html('<h1>Bruh Moment: Logout Error</h1>')
 }
 //////////////////////////////////////////////////////////
-
+const onGameButtonSuccess = function() {
+  $('.4a').show()
+  $('#targethtml').html('')
+}
+const onPlacementSuccess = function() {
+turnlogic.turnCount++
+}
 
 
 module.exports = {
@@ -48,5 +71,6 @@ module.exports = {
   passwordPog ,
   passwordBruh ,
   logOutPog ,
-  logOutBruh
+  logOutBruh ,
+  onGameButtonSuccess
 }
