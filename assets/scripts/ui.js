@@ -1,6 +1,9 @@
 'use strict'
 
 const store = require('./store.js')
+const turnlogic = require('./turnlogic')
+
+
 ////////////////////////////////////////////////////////
 const signUpPoggers = function(response){
   $('form').trigger('reset')
@@ -54,12 +57,25 @@ const logOutBruh = function() {
   $('targethtml').html('<h1>Bruh Moment: Logout Error</h1>')
 }
 //////////////////////////////////////////////////////////
-const onGameButtonSuccess = function() {
+const onGameButtonSuccess = function(response) {
+  store.game = response.game
   $('.4a').show()
   $('#targethtml').html('')
 }
-const onPlacementSuccess = function() {
+/////////////////////////////////////////////////////////
+const onPlacementSuccess = function(value) {
+const targetSpot = event.target
+$(targetSpot).text(value)
+
 turnlogic.turnCount++
+
+console.log(targetSpot.text)
+console.log(turnlogic.turnCount)
+
+}
+///////////////////////////////////////////////////////////
+const onPlacementFailure = function() {
+  console.log('Thou shall not pass')
 }
 
 
@@ -72,5 +88,7 @@ module.exports = {
   passwordBruh ,
   logOutPog ,
   logOutBruh ,
-  onGameButtonSuccess
+  onGameButtonSuccess ,
+  onPlacementSuccess ,
+  onPlacementFailure
 }

@@ -6,7 +6,7 @@ const config = require('./config.js')
 
 const newGameRequest = function() {
   //console.log('Hooray!')
-const data = store.user.token
+
 // console.log(data)
 return $.ajax({
   url: config.apiUrl + '/games',
@@ -15,16 +15,25 @@ return $.ajax({
     Authorization: 'Bearer ' + store.user.token
   }
 })
+const data = store.user.token
 }
-const spotRequest = function(eventLiteral , value) {
+const spotRequest = function(apiIndexFood , value) {
   return $.ajax({
-    url: config.apiUrl + '/games/' + eventLiteral,
+    url: config.apiUrl + '/games/' + store.game._id ,
     method: 'PATCH' ,
+    data: {
+  "game": {
+    "cell": {
+      "index": apiIndexFood,
+      "value": value
+    },
+    "over": false
+  }
+} ,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
   })
-
 }
 
 
