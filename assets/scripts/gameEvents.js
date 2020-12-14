@@ -1,8 +1,6 @@
 'use strict'
 const ui = require('./ui')
 const gameApi = require('./gameApi')
-const turnlogic = require('./turnlogic.js')
-
 
 ///////////////////////////////////////////////////////////////
 const newGameEvent = function(event) {
@@ -11,22 +9,33 @@ const newGameEvent = function(event) {
   .then(ui.onGameButtonSuccess)
 }
 /////////////////////////////////////////////////////////////////
+let turnCount = 2
+/////////////////////////////////////////////////////////////////
 const clickEvent = function(event) {
-// console.log('is this thing on?')
+  //below: this assigns the index to what to give the api
 const apiIndexFood = $(this).data('cell-index')
 const selectedSpot = event.target
 let value
-if (turnlogic.turnCount % 2 === 0){
+//below: this determines whose turn it is
+if (turnCount % 2 === 0){
   value = 'x'
 } else {
   value = 'o'
 }
-// console.log(turnlogic.turnCount , value , selectedSpot.text)
-if (selectedSpot.text === undefined) {
+// check if space is empty
+// If it is empty, add player to board,
+//
+
+
+if ($(selectedSpot).text === '' ){
+$(selectedSpot).text(value)
 gameApi.spotRequest(apiIndexFood, value)
-.then(ui.onPlacementSuccess(value))
-} else if (selectedSpot.text === ('x' || 'o'))  {
+.then(ui.onPlacementSuccess)
+} else if ($(selectedSpot).text === '1')  {
+  console.log('option 2')
   ui.onPlacementFailure()
+} else {
+  console.log('option 3 -- nothing worked')
 }
 }
 //////////////////////////////////////////////////////////

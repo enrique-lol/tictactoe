@@ -3,10 +3,9 @@
 const store = require('./store.js')
 const config = require('./config.js')
 
-
+///////////////////////////////////////////////////////////////////////
 const newGameRequest = function() {
   //console.log('Hooray!')
-
 // console.log(data)
 return $.ajax({
   url: config.apiUrl + '/games',
@@ -17,6 +16,7 @@ return $.ajax({
 })
 const data = store.user.token
 }
+///////////////////////////////////////////////////////////////////////
 const spotRequest = function(apiIndexFood , value) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game._id ,
@@ -35,6 +35,7 @@ const spotRequest = function(apiIndexFood , value) {
     }
   })
 }
+////////////////////////////////////////////////////////
 
 
 

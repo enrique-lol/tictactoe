@@ -22,7 +22,7 @@ $(() => {
   $('#change-password').on('submit', userEvents.changePasswordEvent)
   $('#logout').on('click', userEvents.logoutEvent)
   $('#newgame').on('click', gameEvents.newGameEvent)
-  $('.single-box').on('click', gameEvents.clickEvent)
+  $('.col-4').on('click', gameEvents.clickEvent)
   $('.login-button').on('click', function() {
     $('.sign-in-init').show()
     $('.intro-parent').hide()

@@ -1,6 +1,6 @@
 
 // initiate count at a solid number to fit modulus
-let turnCount = 1
+let turnCount = 2
 
 //players will be reffered to as 'values' in api request
 

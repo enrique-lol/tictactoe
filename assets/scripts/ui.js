@@ -61,17 +61,13 @@ const onGameButtonSuccess = function(response) {
   store.game = response.game
   $('.4a').show()
   $('#targethtml').html('')
+  $('.col-4').text('')
 }
 /////////////////////////////////////////////////////////
-const onPlacementSuccess = function(value) {
-const targetSpot = event.target
-$(targetSpot).text(value)
-
+const onPlacementSuccess = function(response) {
 turnlogic.turnCount++
-
-console.log(targetSpot.text)
+console.log(response.game.cells)
 console.log(turnlogic.turnCount)
-
 }
 ///////////////////////////////////////////////////////////
 const onPlacementFailure = function() {
