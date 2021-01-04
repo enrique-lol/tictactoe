@@ -17,7 +17,7 @@ return $.ajax({
 const data = store.user.token
 }
 ///////////////////////////////////////////////////////////////////////
-const spotRequest = function(apiIndexFood , value) {
+const spotRequest = function(apiIndexFood , value, gameStatus) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game._id ,
     method: 'PATCH' ,
@@ -27,7 +27,7 @@ const spotRequest = function(apiIndexFood , value) {
       "index": apiIndexFood,
       "value": value
     },
-    "over": false
+    "over": gameStatus
   }
 } ,
     headers: {

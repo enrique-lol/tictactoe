@@ -1,8 +1,9 @@
 'use strict'
 
 const store = require('./store.js')
-const turnlogic = require('./turnlogic')
+const gameApi = require('./gameApi')
 
+let gameOver = false
 
 ////////////////////////////////////////////////////////
 const signUpPoggers = function(response){
@@ -36,6 +37,7 @@ const signInBruhMoment = function(){
 const passwordPog = function(){
   $('#targethtml').html('<h1>Remember your new password!!1!</h1>')
   $('form').trigger('reset')
+  $('#message').text("Remember your new password!!11!!1")
 
 }
 ////////////////////
@@ -62,17 +64,132 @@ const onGameButtonSuccess = function(response) {
   $('.4a').show()
   $('#targethtml').html('')
   $('.col-4').text('')
+  let gameOver = false
+  $('#message').text('New Game!')
+  $('.single-box').css('pointer-events', 'auto')
 }
 /////////////////////////////////////////////////////////
-const onPlacementSuccess = function(response) {
-turnlogic.turnCount++
-console.log(response.game.cells)
-console.log(turnlogic.turnCount)
+const onViewGames = function (gameResponse) {
+  const numOfGames = gameResponse.games.length
+  $('#message').text(numOfGames + ' games played!!')
 }
+
+////////////////////////////////////////////////////////
+const onPlacementSuccess = function(response) {
+const gameCells = response.game.cells
+// console.log(gameCells)
+
+
+
+// below: win logic to tell if there is a winner
+if (gameCells[0] === "x" && gameCells[1] === "x" && gameCells[2] === "x" ){
+  // console.log('x wins')
+  gameOverXWins()
+
+} else if (gameCells[0] === "o" && gameCells[1] === "o" && gameCells[2] === "o" ){
+  // console.log('o wins')
+  gameOverOWins()
+
+} else if (gameCells[3] === "x" && gameCells[4] === "x" && gameCells[5] === "x" ){
+  // console.log('x wins')
+  gameOverXWins()
+
+} else if (gameCells[3] === "o" && gameCells[4] === "o" && gameCells[5] === "o" ){
+  // console.log('o wins')
+  gameOverOWins()
+
+} else if (gameCells[6] === "x" && gameCells[7] === "x" && gameCells[8] === "x" ){
+  // console.log('x wins')
+  gameOverXWins()
+
+} else if (gameCells[6] === "o" && gameCells[7] === "o" && gameCells[8] === "o" ){
+  // console.log('o wins')
+  gameOverOWins()
+
+} else if (gameCells[0] === "x" && gameCells[3] === "x" && gameCells[6] === "x" ){
+  // console.log('x wins')
+  gameOverXWins()
+
+} else if (gameCells[0] === "o" && gameCells[3] === "o" && gameCells[6] === "o" ){
+  // console.log('o wins')
+  gameOverOWins()
+
+} else if (gameCells[1] === "x" && gameCells[4] === "x" && gameCells[7] === "x" ){
+  // console.log('x wins')
+  gameOverXWins()
+
+} else if (gameCells[1] === "o" && gameCells[4] === "o" && gameCells[7] === "o" ){
+  // console.log('o wins')
+  gameOverOWins()
+
+} else if (gameCells[2] === "x" && gameCells[5] === "x" && gameCells[8] === "x" ){
+  // console.log('x wins')
+  gameOverXWins()
+
+} else if (gameCells[2] === "o" && gameCells[5] === "o" && gameCells[8] === "o" ){
+  // console.log('o wins')
+  gameOverOWins()
+
+} else if (gameCells[0] === "x" && gameCells[4] === "x" && gameCells[8] === "x" ){
+  // console.log('x wins')
+  gameOverXWins()
+
+} else if (gameCells[2] === "x" && gameCells[4] === "x" && gameCells[6] === "x" ){
+  // console.log('x wins')
+  gameOverXWins()
+
+} else if (gameCells[0] === "o" && gameCells[4] === "o" && gameCells[8] === "o" ){
+  // console.log('o wins')
+  gameOverOWins()
+
+} else if (gameCells[2] === "o" && gameCells[4] === "o" && gameCells[6] === "o" ){
+  // console.log('o wins')
+  gameOverOWins()
+
+}
+const gameDraw = !gameCells.includes('')
+      if (gameDraw) {
+        // console.log("draw i guess")
+        $('#message').text('DRAW! Play again')
+        // $('.box').on('click', function () {
+        //   gameOver = true
+        // })
+        gameOver = true
+        $('.single-box').css('pointer-events', 'none')
+        gameApi.spotRequest(0, "null", true)
+      }
+    }
+
 ///////////////////////////////////////////////////////////
 const onPlacementFailure = function() {
-  console.log('Thou shall not pass')
+  // console.log('Thou shall not pass')
 }
+/////////////////////////////////////////////////////////
+
+const gameOverXWins = function(){
+  // This function should do 2 things:
+  // It should stop the player from adding spaces (harder)
+  // and it should display a message that X won (easier)
+  gameOver = true
+  $('#message').text('X WINS!')
+  $('.single-box').css('pointer-events', 'none')
+  gameApi.spotRequest(0, "null", true)
+
+}
+/////////////////////////////////////////////////////////
+
+const gameOverOWins = function(){
+  // This function should do 2 things:
+  // It should stop the player from adding spaces (harder)
+  // and it should display a message that O won (easier)
+  gameOver = true
+  $('#message').text('O WINS!')
+  $('.single-box').css('pointer-events', 'none')
+  gameApi.spotRequest(0, "null", true)
+  //$().off
+}
+/////////////////////////////////////////////////////////
+
 
 
 module.exports = {
@@ -86,5 +203,8 @@ module.exports = {
   logOutBruh ,
   onGameButtonSuccess ,
   onPlacementSuccess ,
-  onPlacementFailure
+  onPlacementFailure,
+  gameOverXWins,
+  gameOverOWins,
+  onViewGames
 }

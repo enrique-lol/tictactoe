@@ -40,11 +40,24 @@ const logOutRequest = function() {
     }
   })
 }
+////////////////////////////////////////////////////////////
+const viewgames = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
+///////////////////////////////////////////////////////////
 
 
 module.exports = {
   signUpRequest ,
   signInRequest ,
   changePasswordRequest ,
-  logOutRequest
+  logOutRequest,
+  viewgames
 }

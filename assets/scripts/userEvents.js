@@ -45,11 +45,24 @@ const logoutEvent = (event) => {
   .then(ui.logOutPog)
   .catch(ui.logOutBruh)
 }
+///////////////////////////////////////////////////////////////
+const onViewGames = function (event) {
+  event.preventDefault()
+
+  // console.log('Made it to events')
+
+  api.viewgames()
+  .then(ui.onViewGames)
+  .catch(ui.onFailure)
+}
+//////////////////////////////////////////////////////////////
+
 
 
 module.exports = {
   signUpEvent ,
   signInEvent ,
   changePasswordEvent ,
-  logoutEvent
+  logoutEvent,
+  onViewGames
 }
