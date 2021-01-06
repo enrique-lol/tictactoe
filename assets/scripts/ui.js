@@ -151,9 +151,6 @@ const gameDraw = !gameCells.includes('')
       if (gameDraw) {
         // console.log("draw i guess")
         $('#message').text('DRAW! Play again')
-        // $('.box').on('click', function () {
-        //   gameOver = true
-        // })
         gameOver = true
         $('.single-box').css('pointer-events', 'none')
         gameApi.spotRequest(0, "null", true)
